@@ -25,6 +25,10 @@ const (
 	CSMaxEntropy
 )
 
+func (im *Image) AutoOrientImage(orientation int) (*Image, error) {
+	return im.applyDataFunc("auto orientation", C.ImageDataFunc(C.autoOrientImage), &orientation)
+}
+
 func (im *Image) Chop(r Rect) (*Image, error) {
 	return im.applyRectFunc("chopping", C.ImageDataFunc(C.ChopImage), r)
 }

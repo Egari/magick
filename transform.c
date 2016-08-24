@@ -17,3 +17,12 @@ Image *mosaicImages(const Image *image, ExceptionInfo *exception)
     return MosaicImages(image, exception);
 #endif
 }
+
+/**
+ * Wrapper around the AutoOrientImage() call in order to be compatible with the applyDataFunc()
+ */
+Image *autoOrientImage(Image *image, void *orientation, ExceptionInfo *ex)
+{
+    const OrientationType orientationType = *((OrientationType*) orientation);
+    return AutoOrientImage(image, orientationType, ex);
+}
